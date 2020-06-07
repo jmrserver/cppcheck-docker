@@ -3,8 +3,6 @@ name: Build 'master' Docker Image CI
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
 
@@ -15,4 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag cppcheck-docker-gitlab:master-$(date +%s)
+      run: docker build . --file Dockerfile --tag cppcheck-docker-gitlab:latest
+    - name: Authenticate into Docker Hub
+      run: docker login docker.pkg.github.com -u jmrserver --password-stdin
+    - name: Push the Docker image into Docker Hub
+      run: docker push docker.pkg.github.com/jmrserver/cppcheck-docker-gitlab/cppcheck-docker-gitlab:latest
