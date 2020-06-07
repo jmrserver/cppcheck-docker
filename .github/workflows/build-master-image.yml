@@ -18,5 +18,7 @@ jobs:
       run: docker login docker.pkg.github.com -u jmrserver -p "$NEKOT_BUH_REKCOD"
       env:
         NEKOT_BUH_REKCOD: ${{ secrets.NEKOT_BUH_REKCOD }}
+    - name: Tag the Docker image into GitHub repository
+      run: docker tag cppcheck-docker-gitlab-$(date +%s) docker.pkg.github.com/jmrserver/cppcheck-docker-gitlab/cppcheck-docker-gitlab:latest
     - name: Push the Docker image into Docker Hub
       run: docker push docker.pkg.github.com/jmrserver/cppcheck-docker-gitlab/cppcheck-docker-gitlab:latest
