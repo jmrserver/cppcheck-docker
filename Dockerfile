@@ -2,7 +2,7 @@ FROM alpine
 
 MAINTAINER jmrserver
 
-LABEL Forked from neszt/cppcheck-docker (Neszt Tibor <tibor@neszt.hu>)
+LABEL Forked from neszt/cppcheck-docker (by Neszt Tibor <tibor@neszt.hu>)
 
 RUN \
 	T="$(date +%s)" && \
