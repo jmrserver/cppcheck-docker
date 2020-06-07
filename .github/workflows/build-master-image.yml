@@ -15,9 +15,9 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag cppcheck-docker-gitlab:latest
     - name: Authenticate into Docker Hub
-      run: docker login docker.pkg.github.com -u jmrserver -p "$NEKOT_BUH_REKCOD"
+      run: docker login docker.pkg.github.com -u jmrserver -p "$NEKOT_BUHTIG"
       env:
-        NEKOT_BUH_REKCOD: ${{ secrets.NEKOT_BUH_REKCOD }}
+        NEKOT_BUHTIG: ${{ secrets.NEKOT_BUHTIG }}
     - name: Tag the Docker image into GitHub repository
       run: docker tag cppcheck-docker-gitlab docker.pkg.github.com/jmrserver/cppcheck-docker-gitlab/cppcheck-docker-gitlab:latest
     - name: Push the Docker image into Docker Hub
