@@ -1,11 +1,13 @@
 FROM alpine
 
-MAINTAINER Neszt Tibor <tibor@neszt.hu>
+MAINTAINER jmrserver
+
+LABEL Forked from neszt/cppcheck-docker (Neszt Tibor <tibor@neszt.hu>)
 
 RUN \
 	T="$(date +%s)" && \
 	apk add --no-cache -t .required_apks git make g++ pcre-dev && \
-	mkdir -p /usr/src /src && cd /usr/src && \
+	mkdir -p /usr/src && cd /usr/src && \
 	git clone https://github.com/danmar/cppcheck.git && \
 	cd cppcheck && \
 	make install FILESDIR=/cfg HAVE_RULES=yes CXXFLAGS="-O2 -DNDEBUG --static" -j `getconf _NPROCESSORS_ONLN` && \
@@ -15,4 +17,4 @@ RUN \
 	T="$(($(date +%s)-T))" && \
 	printf "Build time: %dd %02d:%02d:%02d\n" "$((T/86400))" "$((T/3600%24))" "$((T/60%60))" "$((T%60))"
 
-ENTRYPOINT ["cppcheck", "/src"]
+CMD ["cppcheck", "--version"]
