@@ -23,7 +23,7 @@ Main aims:
 To allow <kbd>Ctrl</kbd> + <kbd>C</kbd> during cppcheck run use `-t` docker argument:
 
 ```bash
-[To Be Defined] docker run -t -v $(pwd):/src cppcheck
+[ To Be Defined ] docker run -t -v $(pwd):/src cppcheck
 ```
 
 ## References
