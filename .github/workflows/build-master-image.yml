@@ -1,8 +1,9 @@
-name: Build 'master' Docker Image CI
+name: Build Docker Image CI
 
 on:
   push:
     branches: [ master ]
+    paths-ignore: [ '.github/workflows/**' ]
 
 jobs:
 
