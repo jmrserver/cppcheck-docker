@@ -15,12 +15,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag cppcheck-docker-gitlab:latest
+      run: docker build . --file Dockerfile --tag cppcheck-docker-gitlab:${GITHUB_REF##*/}
     - name: Authenticate into Docker Hub
       run: docker login -u jmrserver -p "$NEKOT_BUH_REKCOD"
       env:
         NEKOT_BUH_REKCOD: ${{ secrets.NEKOT_BUH_REKCOD }}
     - name: Tag the Docker image into Docker Hub repository
-      run: docker tag cppcheck-docker-gitlab jmrserver/cppcheck-docker-gitlab:latest
+      run: docker tag cppcheck-docker-gitlab jmrserver/cppcheck-docker-gitlab:${GITHUB_REF##*/}
     - name: Push the image into Docker Hub repository
-      run: docker push jmrserver/cppcheck-docker-gitlab:latest
+      run: docker push jmrserver/cppcheck-docker-gitlab:${GITHUB_REF##*/}
