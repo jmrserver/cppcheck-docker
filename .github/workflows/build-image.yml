@@ -1,0 +1,25 @@
+name: Build Docker Image CI
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore: [ '.github/workflows/**' ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag cppcheck-docker-gitlab:latest
+    - name: Authenticate into Docker Hub
+      run: docker login -u jmrserver -p "$NEKOT_BUH_REKCOD"
+      env:
+        NEKOT_BUH_REKCOD: ${{ secrets.NEKOT_BUH_REKCOD }}
+    - name: Tag the Docker image into Docker Hub repository
+      run: docker tag cppcheck-docker-gitlab jmrserver/cppcheck-docker-gitlab:latest
+    - name: Push the image into Docker Hub repository
+      run: docker push jmrserver/cppcheck-docker-gitlab:latest

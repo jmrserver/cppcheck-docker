@@ -26,7 +26,7 @@ To allow <kbd>Ctrl</kbd> + <kbd>C</kbd> during cppcheck run use `-t` docker argu
 [ To Be Defined ] docker run -t -v $(pwd):/src cppcheck
 ```
 
-## References
+## References 
 
 [Cppcheck manual](http://cppcheck.sourceforge.net/manual.html)
 
