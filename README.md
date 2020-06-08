@@ -14,7 +14,7 @@ Main aims:
 
 4. Gitlab integration. Able to run cppcheck as a Gitlab CI job and generate CodeClimate-compliant reports.
 
-## Usage 
+## Usage
 
 ```bash
 [To Be Defined] docker run -v $(pwd):/src cppcheck 
@@ -23,10 +23,10 @@ Main aims:
 To allow <kbd>Ctrl</kbd> + <kbd>C</kbd> during cppcheck run use `-t` docker argument:
 
 ```bash
-[ To Be Defined ] docker run -t -v $(pwd):/src cppcheck
+[To Be Defined] docker run -t -v $(pwd):/src cppcheck
 ```
 
-## References 
+## References
 
 [Cppcheck manual](http://cppcheck.sourceforge.net/manual.html)
 
